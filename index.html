@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      li {
+        list-style: none;
+      }
+      .faq {
+        width: 1000px;
+        margin: 200px auto;
+      }
+      .faq .faq-item__list {
+        border-bottom: 1px solid #eee;
+        padding: 30px 0;
+      }
+      .faq .faq-item__list.is_active .answer {
+        display: block;
+      }
+      .faq .faq-item__list .answer {
+        display: none;
+      }
+      .faq .faq-item__list .question {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+      }
+      .faq .faq-item__list .question p {
+        font-size: 20px;
+      }
+
+      .faq .faq-item__list .answer p {
+        font-size: 16px;
+      }
+    </style>
+    <div class="faq">
+      <ul class="faq-item"></ul>
+    </div>
+    <!-- <script>
+        function onClickTest(e){
+            console.log()
+        }
+    </script> -->
+    <!-- e.classList.toggle('is_active') 
+    e : this
+    classList : this의 클래스를 리스트로 가져온다
+    toggle : 클래스를 넣었다 뺏다 토글시킨다
+    각 메소드의 연결은 . 으로
+    그래서 e.classList.toggle('클래스명')
+    ㅇㅇ 잘했음
+    나머지.... 다 온클릭 넣어야지
+    그래야 다른것도 되니까
+    전부다 접혀있는 상태에서 클릭하면 펴지는걸로 하자
+
+
+    잘했음 쉽지?
+    근데
+    is_active가 클래스에 안들어있?는데
+    어케 인식이 되는거임? css 지정을 해놔서..?
+    ㅇㅇ
+
+    li에 is_active 가 toggle 되는데
+    css 에서 is_active 안에 anwer 가 display:block 이고
+    기본 li 안에 answer 가 display:none 이니까
+    is_active 가 있을땐 block을 먹는거지
+    
+    오.............................................................지
+    아놔화살표
+
+
+    확인해봐 되나
+    잘돼 ...............................
+    is_active도 다 넣어줘야 함..?
+    
+    그럼 여기서...
+    -->
+    <script>
+      //  onClickToggle === onClickFaqToggle
+      // 이 두가지가 같은거야
+      // 근데 일단 아래껄로 써
+      // 위에 화살표 함수는 뷰에서 다시 알려줄게 알고만 있으면 돼
+      // 상황에 따라 다른데..#eee
+      // 이렇게 this 요소를 따로 적지않고 더 짧은 문법으로 작성이 가능한데 이건 좀 깊이 들어가야해서 뷰에서 알려줄게 ㅋ
+      // 그리고.. 함 봐봐 내가 작성하는거
+      const testfn = () => {
+        this.target;
+      };
+
+      //근데 왜 화살표를 씀? 저게 es6문법인건 알겠는데...
+      //존나.. 감사... 머짱이 ...
+
+      const jsonTest = {
+        dog: [
+          { name: "식빵", family: "웰시코기", age: 1, weight: 2.14 },
+          { name: "콩콩", family: "포메라니안", age: 3, weight: 2.5 },
+          { name: "젤리", family: "푸들", age: 7, weight: 3.1 },
+        ],
+      };
+
+      const dataTxt = ["징문내용", "답변"];
+
+      // innerData의 값이 비어있는데
+
+      let innerData = "";
+      const arrayData = [...jsonTest.dog];
+
+      arrayData.map((e) => {
+        // 여기서 데이터를 넣음.. 변환되는 데이터는 const로 잡으면 에러남
+        innerData += `<li class="faq-item__list" onclick="onClickFaqToggle(this);">
+            <div class="question">
+                <p>${e.name}</p>
+            </div>
+            <div class="answer">
+                <p>${e.family}</p>
+            </div>
+        </li>`;
+      });
+
+      document.querySelector(".faq-item").innerHTML = innerData;
+
+      const onClickToggle = (e) => {
+        e.classList.toggle("is_active");
+      };
+
+      function onClickFaqToggle(e) {
+        e.classList.toggle("is_active");
+      }
+    </script>
+  </body>
+</html>
